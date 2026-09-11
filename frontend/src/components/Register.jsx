@@ -11,8 +11,16 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-    }
 
+        try {
+            const response = await axios.post('http://localhost:3001/register', { username, password })
+            setMessage(response.data.message)
+
+            navigate('/login')
+        } catch (error) {
+            setMessage(error.response.data.message)
+        }
+    }
 
     return (
         <div className='container mt-5'>
