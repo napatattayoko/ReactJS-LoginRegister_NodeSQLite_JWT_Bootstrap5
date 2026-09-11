@@ -3,6 +3,7 @@ const sqlite3 = require("sqlite3").verbose();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 const port = 3001;
@@ -75,7 +76,7 @@ app.post("/login", (req, res) => {
       JWT_SECRET,
       { expiresIn: "1h" },
     );
-    res.json({ message: "Login succesfully" }, token);
+    res.json({ message: "Login succesfully", token });
   });
 });
 
